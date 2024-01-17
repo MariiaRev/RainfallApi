@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rainfall</name>
+    </assembly>
+    <members>
+        <member name="T:Rainfall.ApiModels.Error">
+            <summary>
+            Error response
+            </summary>
+            <remarks>Details of a rainfall reading</remarks>
+        </member>
+        <member name="T:Rainfall.ApiModels.ErrorDetail">
+            <summary>
+            Details of invalid request property
+            </summary>
+        </member>
+        <member name="T:Rainfall.ApiModels.RainfallReading">
+            <summary>
+            Details of a rainfall reading
+            </summary>
+        </member>
+        <member name="T:Rainfall.ApiModels.RainfallReadingResponse">
+            <summary>
+            Details of a rainfall reading
+            </summary>
+        </member>
+    </members>
+</doc>
