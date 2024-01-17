@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RainfallApi</name>
+    </assembly>
+    <members>
+        <member name="T:RainfallApi.Controllers.RainfallController">
+            <summary>
+            Operations relating to rainfall
+            </summary>
+        </member>
+        <member name="M:RainfallApi.Controllers.RainfallController.#ctor(Rainfall.Core.FloodMonitoring.IFloodMonitoringService)">
+            <summary>
+            Rainfall controller's constructor
+            </summary>
+            <param name="floodMonitoringService"></param>
+        </member>
+        <member name="M:RainfallApi.Controllers.RainfallController.GetRainfall(System.String,System.Int32)">
+            <summary>
+            Get rainfall readings by station Id
+            </summary>
+            <remarks>Retrieve the latest readings for the specified stationId</remarks>
+            <param name="stationId">The id of the reading station</param>
+            <param name="count">The number of readings to return</param>
+            <response code="200">A list of rainfall readings successfully retrieved</response>
+            <response code="400">Invalid request</response>
+            <response code="404">No readings found for the specified stationId</response>
+            <response code="500">Internal server error</response>
+        </member>
+    </members>
+</doc>

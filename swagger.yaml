@@ -1,0 +1,98 @@
+openapi: 3.1.0
+info:
+  title: Rainfall Api
+  description: An API which provides rainfall reading data
+  version: '1.0'
+servers:
+  - url: http://localhost:3000
+    description: Rainfall Api
+paths:
+  '/Rainfall/id/{stationId}/readings':
+    get:
+      tags:
+        - Rainfall
+      operationId: GET-Rainfall
+      parameters:
+        - name: stationId
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: string
+        - name: count
+          in: query
+          style: form
+          schema:
+            maximum: 100
+            minimum: 1
+            type: integer
+            format: int32
+            default: 10
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RainfallReadingResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '500':
+          description: Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          nullable: true
+        detail:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+          nullable: true
+      additionalProperties: false
+    ErrorDetail:
+      type: object
+      properties:
+        propertyName:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RainfallReading:
+      type: object
+      properties:
+        dateMeasured:
+          type: string
+          format: date-time
+        amountMeasured:
+          type: number
+          format: double
+      additionalProperties: false
+    RainfallReadingResponse:
+      type: object
+      properties:
+        readings:
+          type: array
+          items:
+            $ref: '#/components/schemas/RainfallReading'
+          nullable: true
+      additionalProperties: false
